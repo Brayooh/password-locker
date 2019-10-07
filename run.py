@@ -24,13 +24,6 @@ def save_user(User):
     '''
     User.save_user()
 
-# def generate_password():
-#     '''
-#     Function to generate a password automatically
-#     '''
-#     gen_pass = Credential.generate_password()
-#     return gen_pass
-
 
 def create_credential(user_name, site_name, account_name, password):
     '''
@@ -54,11 +47,11 @@ def display_credentials(user_name):
     return Credential.display_credentials(user_name)
 
 
-# def copy_credential(site_name):
-#     '''
-#     Function to copy a credentials details to the clipboard
-#     '''
-#     return Credential.copy_credential(site_name)
+def copy_credential(site_name):
+    '''
+    Function to copy a credentials details to the clipboard
+    '''
+    return Credential.copy_credential(site_name)
 
 
 def main():
@@ -128,7 +121,6 @@ def main():
                                 break
                             else:
                                 print('Oops! Wrong option entered. Try again.')
-                        save_credential(create_credential(user_name, site_name, account_name, password))
                         print(' ')
                         print(
                             f'Credential Created: Site Name: {site_name} - Account Name: {account_name} - Password: {password}')

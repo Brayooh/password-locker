@@ -64,23 +64,16 @@ class Credential:
         '''
         Function to save a newly created user instance
         '''
-    def test_copy_credential(self):
-        '''
-        Test to check if the copy a credential method copies the correct credential
-        '''
-        self.new_credential.save_credentials()
-        twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
-        twitter.save_credentials()
-        find_credential = None
-        for credential in Credential.user_credentials_list:
-            find_credential = Credential.find_by_site_name(credential.site_name)
-            return pyperclip.copy(find_credential.password)
-
-        Credential.copy_credential(self.new_credential.site_name)
-        self.assertEqual('pswd100', pyperclip.paste())
-        print(pyperclip.paste())
-        global users_list
+        # global users_list
         Credential.credentials_list.append(self)
+
+    @classmethod
+    def generate_password(size=8, char=string.ascii_uppercase + string.ascii_lowercase + string.digits):
+        '''
+        Function to generate an 8 character password for a credential
+        '''
+        gen_pass = ''.join(random.choice(char) for _ in range(size))
+        return gen_pass
 
     @classmethod
     def display_credentials(cls, user_name):
