@@ -30,13 +30,13 @@ class User:
         User.users_list.append(self)
 
 
-# class Credential:
-#     '''
-#     Class to create  account credentials, generate passwords and save their information
-#     '''
-#     # Class Variables
-#     credentials_list = []
-#     user_credentials_list = []
+class Credential:
+    '''
+    Class to create  account credentials, generate passwords and save their information
+    '''
+    # Class Variables
+    credentials_list = []
+    user_credentials_list = []
 
 #     @classmethod
 #     def check_user(cls, first_name, password):
