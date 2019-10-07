@@ -49,58 +49,58 @@ class TestCredentials(unittest.TestCase):
         user2 = User('Ngigi', 'Kariuki', 'pswd100')
         user2.save_user()
 
-#         for user in User.users_list:
-#             if user.first_name == user2.first_name and user.password == user2.password:
-#                 current_user = user.first_name
-#             return current_user
+        for user in User.users_list:
+            if user.first_name == user2.first_name and user.password == user2.password:
+                current_user = user.first_name
+            return current_user
 
-#         self.assertEqual(current_user, Credential.check_user(user2.password, user2.first_name))
+        self.assertEqual(current_user, Credential.check_user(user2.password, user2.first_name))
 
-#     def setUp(self):
-#         '''
-#         Function to create an account's credentials before each test
-#         '''
-#         self.new_credential = Credential(
-#             'Ngigi', 'Facebook', 'test', 'pswd100')
+    def setUp(self):
+        '''
+        Function to create an account's credentials before each test
+        '''
+        self.new_credential = Credential(
+            'Ngigi', 'Facebook', 'test', 'pswd100')
 
 
-#     def test_save_credentials(self):
-#         '''
-#         Test to check if the new credential info is saved into the credentials list
-#         '''
-#         self.new_credential.save_credentials()
-#         twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
-#         twitter.save_credentials()
-#         self.assertEqual(len(Credential.credentials_list), 2)
+    def test_save_credentials(self):
+        '''
+        Test to check if the new credential info is saved into the credentials list
+        '''
+        self.new_credential.save_credentials()
+        twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
+        twitter.save_credentials()
+        self.assertEqual(len(Credential.credentials_list), 2)
 
-#     def tearDown(self):
-#         '''
-#         Function to clear the credentials list after every test
-#         '''
-#         Credential.credentials_list = []
-#         User.users_list = []
+    def tearDown(self):
+        '''
+        Function to clear the credentials list after every test
+        '''
+        Credential.credentials_list = []
+        User.users_list = []
 
-#     def test_display_credentials(self):
-#         '''
-#         Test to check if the display_credentials method, displays the correct credentials.
-#         '''
-#         self.new_credential.save_credentials()
-#         twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
-#         twitter.save_credentials()
-#         gmail = Credential('Ngigi', 'Gmail', 'send', 'pswd200')
-#         gmail.save_credentials()
-#         self.assertEqual(
-#             len(Credential.display_credentials(twitter.user_name)), 3)
+    def test_display_credentials(self):
+        '''
+        Test to check if the display_credentials method, displays the correct credentials.
+        '''
+        self.new_credential.save_credentials()
+        twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
+        twitter.save_credentials()
+        gmail = Credential('Ngigi', 'Gmail', 'send', 'pswd200')
+        gmail.save_credentials()
+        self.assertEqual(
+            len(Credential.display_credentials(twitter.user_name)), 3)
 
-#     def test_find_by_site_name(self):
-#         '''
-#         Test to check if the find_by_site_name method returns the correct credential
-#         '''
-#         self.new_credential.save_credentials()
-#         twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
-#         twitter.save_credentials()
-#         credential_exists = Credential.find_by_site_name('Twitter')
-#         self.assertEqual(credential_exists, twitter)
+    def test_find_by_site_name(self):
+        '''
+        Test to check if the find_by_site_name method returns the correct credential
+        '''
+        self.new_credential.save_credentials()
+        twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
+        twitter.save_credentials()
+        credential_exists = Credential.find_by_site_name('Twitter')
+        self.assertEqual(credential_exists, twitter)
 
 #     def test_copy_credential(self):
 #         '''
