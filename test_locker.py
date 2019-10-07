@@ -1,5 +1,5 @@
 import unittest
-# import pyperclip
+import pyperclip
 from locker import User, Credential
 
 
