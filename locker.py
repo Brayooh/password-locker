@@ -38,43 +38,43 @@ class Credential:
     credentials_list = []
     user_credentials_list = []
 
-#     @classmethod
-#     def check_user(cls, first_name, password):
-#         '''
-#         Method that checks if the name and password entered match entries in the users_list
-#         '''
-#         current_user = ''
-#         for user in User.users_list:
-#             if (user.first_name == first_name and user.password == password):
-#                 current_user = user.first_name
-#         return current_user
+    @classmethod
+    def check_user(cls, first_name, password):
+        '''
+        Method that checks if the name and password entered match entries in the users_list
+        '''
+        current_user = ''
+        for user in User.users_list:
+            if (user.first_name == first_name and user.password == password):
+                current_user = user.first_name
+        return current_user
 
-#     def __init__(self, user_name, site_name, account_name, password):
-#         '''
-#         Method to define the properties for each user object will hold.
-#         '''
+    def __init__(self, user_name, site_name, account_name, password):
+        '''
+        Method to define the properties for each user object will hold.
+        '''
 
-#         # instance variables
-#         self.user_name = user_name
-#         self.site_name = site_name
-#         self.account_name = account_name
-#         self.password = password
+        # instance variables
+        self.user_name = user_name
+        self.site_name = site_name
+        self.account_name = account_name
+        self.password = password
 
-#     def save_credentials(self):
-#         '''
-#         Function to save a newly created user instance
-#         '''
-#     def test_copy_credential(self):
-#         '''
-#         Test to check if the copy a credential method copies the correct credential
-#         '''
-#         self.new_credential.save_credentials()
-#         twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
-#         twitter.save_credentials()
-#         find_credential = None
-#         for credential in Credential.user_credentials_list:
-#             find_credential = Credential.find_by_site_name(credential.site_name)
-#             return pyperclip.copy(find_credential.password)
+    def save_credentials(self):
+        '''
+        Function to save a newly created user instance
+        '''
+    def test_copy_credential(self):
+        '''
+        Test to check if the copy a credential method copies the correct credential
+        '''
+        self.new_credential.save_credentials()
+        twitter = Credential('Ngigi', 'Twitter', 'works', 'pswd100')
+        twitter.save_credentials()
+        find_credential = None
+        for credential in Credential.user_credentials_list:
+            find_credential = Credential.find_by_site_name(credential.site_name)
+            return pyperclip.copy(find_credential.password)
 
 #         Credential.copy_credential(self.new_credential.site_name)
 #         self.assertEqual('pswd100', pyperclip.paste())
