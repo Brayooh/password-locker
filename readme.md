@@ -29,9 +29,9 @@ As a user I would like:
 ## SetUp / Installation Requirements
 ### Prerequisites
 * python3.6
-* pip
 * pyperclip
-* xclip
+* Random
+* Pip
 
 ### Cloning
 * In your terminal:

@@ -1,104 +1,110 @@
-import random
-import string
 import pyperclip
-
-global users_list
-
-
-class User:
-    '''
-    class to create user accounts and save their information
-    '''
-    # class Variables
-    # global users_list
-    users_list = []
-
-    def __init__(self, first_name, last_name, password):
-        '''
-        Method to define the properties for each user object will hold.
-        '''
-
-        # instance variables
-        self.first_name = first_name
-        self.last_name = last_name
-        self.password = password
-
-    def save_user(self):
-        '''
-        Function to save a newly created user instance
-        '''
-        User.users_list.append(self)
+import random
 
 
 class Credential:
-    '''
-    Class to create  account credentials, generate passwords and save their information
-    '''
-    # Class Variables
+    """
+    Class that generates new instance of user's credentials
+    """
+
     credentials_list = []
-    user_credentials_list = []
 
-    @classmethod
-    def check_user(cls, first_name, password):
-        '''
-        Method that checks if the name and password entered match entries in the users_list
-        '''
-        current_user = ''
-        for user in User.users_list:
-            if (user.first_name == first_name and user.password == password):
-                current_user = user.first_name
-        return current_user
-
-    def __init__(self, user_name, site_name, account_name, password):
-        '''
-        Method to define the properties for each user object will hold.
-        '''
-
-        # instance variables
-        self.user_name = user_name
-        self.site_name = site_name
-        self.account_name = account_name
+    def __init__(self, view_password, account, login, password):
+        self.view_password = view_password
+        self.account = account
+        self.login = login
         self.password = password
 
-    def save_credentials(self):
-        '''
-        Function to save a newly created user instance
-        '''
-        # global users_list
+    def save_credential(self):
+        """
+        save_credential method saves credential objects into the credential_list
+        """
         Credential.credentials_list.append(self)
 
-    @classmethod
-    def generate_password(size=8, char=string.ascii_uppercase + string.ascii_lowercase + string.digits):
+    def del_credential(self):
         '''
-        Function to generate an 8 character password for a credential
+        delete_credential method deletes a saved credential from the credential_list
         '''
-        gen_pass = ''.join(random.choice(char) for _ in range(size))
-        return gen_pass
+        Credential.credentials_list.remove(self)
 
     @classmethod
-    def display_credentials(cls, user_name):
+    def find_by_account(cls, account):
         '''
-        Class method to display the list of credentials saved
+        Method that takes in a number and returns a credential that matches that account name.
+        Args:
+            account: Account name to search for
+        Returns :
+            Credential of account that matches the account name.
         '''
-        user_credentials_list = []
-        for credential in cls.credentials_list:
-            if credential.user_name == user_name:
-                user_credentials_list.append(credential)
-        return user_credentials_list
 
-    @classmethod
-    def find_by_site_name(cls, site_name):
-        '''
-        Method that takes in a site_name and returns a credential that matches that site_name.
-        '''
         for credential in cls.credentials_list:
-            if credential.site_name == site_name:
+            if credential.account == account:
                 return credential
 
     @classmethod
-    def copy_credential(cls, site_name):
+    def credential_exist(cls, account):
         '''
-        Class method that copies a credential's info after the credential's site name is entered
+        Method that checks if a credential exists from the credential list.
+        Args:
+            account: Account name to search if it exists
+        Returns :
+            Boolean: True or false depending if the credential exists
         '''
-        find_credential = Credential.find_by_site_name(site_name)
-        return pyperclip.copy(find_credential.password)
+        for credential in cls.credentials_list:
+            if credential.account == account:
+                return True
+
+        return False
+
+    @classmethod
+    def display_credentials(cls):
+        """
+        display_credentials method that returns the credential list
+        """
+        return cls.credentials_list
+
+
+class User:
+    """
+    Class that generates new instance of users
+    """
+    user_list = []
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def save_user(self):
+        """
+        save_user method saves user objects into the user_list
+        """
+        User.user_list.append(self)
+
+    @classmethod
+    def find_by_number(cls, username):
+        '''
+        Method that takes in a username and returns a user matched that username.
+        Args:
+            username: username to search for
+        Returns:
+            user that matched the username.
+        '''
+
+        for user in cls.user_list:
+            if user.username == username:
+                return user
+
+    @classmethod
+    def user_exist(cls, characters):
+        """
+        user_exists method that checks is a user exists from the user list
+        args:
+        characters:password to search is nthe user exists 
+        returns:
+            boolean:true or false depending on the condition
+        """
+        for user in cls.user_list:
+            if user.password == characters:
+                return True
+
+        return False
